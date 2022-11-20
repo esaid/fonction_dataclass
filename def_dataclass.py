@@ -7,21 +7,19 @@ from dataclasses import dataclass
 # parametres
 @dataclass
 class info_values:
-    info: str
-    nb: int
+    message: str
+    indice: int
+    nb = 0
+
+    def info_total(self):
+        info = 'voici mon info  ' + self.message + ' indice: ' + str(self.indice) + ' longueur:  ' + str(len(self.message))
+        self.nb = len(self.message)
+        return info
 
 
-# ma fonction
-def info(message, indice):
-    info = 'voici mon info  ' + message + ' indice: ' + str(indice)
-    nb = len(message)
-    t = info_values(info, nb)
-    return t
-
-
-# utilisation de ma fonction
-myinfo = info('information', 1)
+# instanciation
+myinfo = info_values('information', 1)
 
 # les valeurs
 print('longueur de mon message :', myinfo.nb)
-print(myinfo.info)
+print(myinfo.info_total())
